@@ -6,7 +6,14 @@ export interface User{
 }
 
 export class UserRepository {
-    data: User[] = [];
+    data: User[] = [
+        {
+            username: 'admin',
+            email: 'admin@admin.com',
+            id: '1',
+            password: 'admin'
+        }
+    ];
     
     public getUser(username?: string, email?: string): User | undefined {
         if(username){

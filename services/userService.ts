@@ -22,7 +22,7 @@ export class UserService {
         return this.userRepository.addUser(user);
     }
 
-    public getUser(username: string, email: string): User | undefined{
-        return this.userRepository.getUser(username, email)
+    public getUser(username?: string, email?: string): User | undefined{
+        return this.userRepository.getUser(username, email);
     }
 }
