@@ -9,6 +9,10 @@ export class UserController {
     }
 
     listenMethods () {
+        this.httpGetMethods();
+    }
+
+    private httpGetMethods () {
         this.app.get(`${this.path}`, (req: Request, res: Response) => {
             res.send("Método com userController");
         });
