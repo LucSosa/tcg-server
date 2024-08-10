@@ -18,7 +18,7 @@ export class UserService {
         return false;
     }
 
-    public addUser(user: User): boolean {
+    public addUser(user: User): User {
         return this.userRepository.addUser(user);
     }
 

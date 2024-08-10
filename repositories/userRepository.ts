@@ -24,12 +24,12 @@ export class UserRepository {
         }
     }
 
-    public addUser(user: User): boolean {
+    public addUser(user: User): User {
         if(!this.getUser(user.username)) {
             this.data.push(user);
-            return true;
+            return user;
         }
 
-        return false;
+        throw new Error('User already exist');
     }
 }
