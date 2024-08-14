@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import { UserController } from "./controllers/userController";
 import bodyParser from "body-parser";
+import { GCardController } from "./controllers/gCardController";
 
 dotenv.config();
 
@@ -20,7 +21,10 @@ app.use(function(req, res, next) {
 app.use(bodyParser.json())
 
 const userController = new UserController(app);
+const gCardController = new GCardController(app);
+
 userController.listenMethods();
+gCardController.listenMethods();
 
 
 app.listen(port, () => {

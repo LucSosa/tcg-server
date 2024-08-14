@@ -1,6 +1,5 @@
 import { Express, Request, Response } from "express";
 import { UserService } from "../services/userService";
-import { error } from "console";
 
 export class UserController {
     app : Express;
