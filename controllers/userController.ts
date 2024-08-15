@@ -1,5 +1,6 @@
 import { Express, Request, Response } from "express";
 import { UserService } from "../services/userService";
+import { User } from "../repositories/userRepository";
 
 export class UserController {
     app : Express;
@@ -20,11 +21,8 @@ export class UserController {
             try {
                 const user = this.userService.getUser(req.params.username);
 
-                const userRestrict = {...user};
-                delete userRestrict.password;
-
-                if(userRestrict) {
-                    res.send(userRestrict);
+                if(user) {
+                    res.send(this.removePassword(user));
                 } else {
                     res.statusCode = 404;
                     res.send({error: 'Not Found'});
@@ -48,7 +46,20 @@ export class UserController {
         });
 
         this.app.post(`${this.path}/authenticate`, (req: Request, res: Response) => {
-            res.send(this.userService.authenticateUser(req.body))
+            const user = this.userService.authenticateUser(req.body);
+
+            if(user) {
+                res.send(this.removePassword(user));
+            } else {
+                res.send(null);
+            }
         });
+    }
+
+    removePassword(user: User) {
+        const userRestrict = {...user};
+        delete userRestrict.password;
+
+        return userRestrict;
     }
 }
