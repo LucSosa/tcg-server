@@ -1,17 +1,8 @@
 import { GCard } from "./model/gcard";
+import { cardsMock } from "./model/gcard.mock";
 
 export class GCardRepository {
-    data: GCard[] = [
-        {
-            id: '1teste',
-            rarity: 'common',
-            type: 'monster',
-            color: ['blue', 'green'],
-            image: 'url',
-            spell: 'cancel',
-            name: 'card test'
-        }
-    ];
+    data: GCard[] = cardsMock
     
     public getCard(id: string): GCard | undefined {
         return this.data.find(card => card.id === id);

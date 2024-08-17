@@ -18,7 +18,8 @@ app.use(function(req, res, next) {
   next();
 })
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
+app.use(express.static('public'));
 
 const userController = new UserController(app);
 const gCardController = new GCardController(app);
