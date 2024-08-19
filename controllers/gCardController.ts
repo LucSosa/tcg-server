@@ -30,6 +30,15 @@ export class GCardController {
                 throw e;
             }
         });
+
+        this.app.get(`${this.path}`, (req: Request, res: Response) => {
+            try {
+                const gcards = this.gCardService.getGCards();
+                    res.send(gcards);
+            } catch (e) {
+                throw e;
+            }
+        });
     }
 
     private httpPostMethods () {

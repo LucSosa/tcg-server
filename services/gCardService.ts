@@ -11,4 +11,8 @@ export class GCardService {
     public getGCard (id: string): GCard | undefined{
         return this.gCardRepository.getCard(id);
     }
+
+    public getGCards (): GCard[] {
+        return this.gCardRepository.getCards();
+    }
 }
